@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NewAI - Advanced AI Solutions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #35424a;
+            color: #ffffff;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        .language-switch {
+            display: flex;
+            gap: 1rem;
+        }
+        .language-btn {
+            background: none;
+            border: 1px solid #ffffff;
+            color: #ffffff;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .language-btn:hover, .language-btn.active {
+            background-color: #ffffff;
+            color: #35424a;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+        .main-content {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>NewAI</h1>
+        <div class="language-switch">
+            <button class="language-btn active" onclick="changeLanguage('en')">English</button>
+            <button class="language-btn" onclick="changeLanguage('zh')">中文</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="main-content">
+            <h2 id="about-title">About Us</h2>
+            <p id="about-content">NewAI LLC is an innovative company dedicated to advancing cutting-edge artificial intelligence technologies. We specialize in providing advanced AI solutions across various industries, helping businesses achieve intelligent transformation, enhance efficiency, and create new business value.</p>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            en: {
+                title: "NewAI - Advanced AI Solutions",
+                aboutTitle: "About Us",
+                aboutContent: "NewAI LLC is an innovative company dedicated to advancing cutting-edge artificial intelligence technologies. We specialize in providing advanced AI solutions across various industries, helping businesses achieve intelligent transformation, enhance efficiency, and create new business value."
+            },
+            zh: {
+                title: "NewAI - 先进的人工智能解决方案",
+                aboutTitle: "关于我们",
+                aboutContent: "NewAI LLC是一家致力于推进尖端人工智能技术的创新公司。我们专注于为各行各业提供先进的AI解决方案，帮助企业实现智能化转型，提高效率，创造新的商业价值。"
+            }
+        };
+
+        function changeLanguage(lang) {
+            document.title = translations[lang].title;
+            document.getElementById('about-title').textContent = translations[lang].aboutTitle;
+            document.getElementById('about-content').textContent = translations[lang].aboutContent;
+            
+            document.querySelectorAll('.language-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.language-btn[onclick="changeLanguage('${lang}')"]`).classList.add('active');
+            
+            document.documentElement.lang = lang;
+        }
+    </script>
+</body>
+</html>
