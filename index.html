@@ -11,6 +11,9 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         header {
             background-color: #35424a;
@@ -45,6 +48,7 @@
             margin: auto;
             overflow: hidden;
             padding: 20px;
+            flex: 1;
         }
         .main-content {
             background-color: #ffffff;
@@ -52,6 +56,13 @@
             margin-top: 20px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        footer {
+            background-color: #35424a;
+            color: #ffffff;
+            text-align: center;
+            padding: 1rem;
+            margin-top: auto;
         }
     </style>
 </head>
@@ -71,17 +82,26 @@
         </div>
     </div>
 
+    <footer>
+        <p id="copyright">© 2024 NewAI</p>
+        <p id="contact">Contact: robot@newailabs.com</p>
+    </footer>
+
     <script>
         const translations = {
             en: {
                 title: "NewAI - Advanced AI Solutions",
                 aboutTitle: "About Us",
-                aboutContent: "NewAI LLC is an innovative company dedicated to advancing cutting-edge artificial intelligence technologies. We specialize in providing advanced AI solutions across various industries, helping businesses achieve intelligent transformation, enhance efficiency, and create new business value."
+                aboutContent: "NewAI LLC is an innovative company dedicated to advancing cutting-edge artificial intelligence technologies. We specialize in providing advanced AI solutions across various industries, helping businesses achieve intelligent transformation, enhance efficiency, and create new business value.",
+                copyright: "© 2024 NewAI",
+                contact: "Contact: robot@newailabs.com"
             },
             zh: {
                 title: "NewAI - 先进的人工智能解决方案",
                 aboutTitle: "关于我们",
-                aboutContent: "NewAI LLC是一家致力于推进尖端人工智能技术的创新公司。我们专注于为各行各业提供先进的AI解决方案，帮助企业实现智能化转型，提高效率，创造新的商业价值。"
+                aboutContent: "NewAI LLC是一家致力于推进尖端人工智能技术的创新公司。我们专注于为各行各业提供先进的AI解决方案，帮助企业实现智能化转型，提高效率，创造新的商业价值。",
+                copyright: "© 2024 NewAI",
+                contact: "联系方式：robot@newailabs.com"
             }
         };
 
@@ -89,6 +109,8 @@
             document.title = translations[lang].title;
             document.getElementById('about-title').textContent = translations[lang].aboutTitle;
             document.getElementById('about-content').textContent = translations[lang].aboutContent;
+            document.getElementById('copyright').textContent = translations[lang].copyright;
+            document.getElementById('contact').textContent = translations[lang].contact;
             
             document.querySelectorAll('.language-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelector(`.language-btn[onclick="changeLanguage('${lang}')"]`).classList.add('active');
